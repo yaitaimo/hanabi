@@ -3,7 +3,6 @@
     "name": "Hanabi",
     "version": "0.1",
 
-    "dfault_locale": "en",
     "description": "Share one of members' happy feeling of merge with Team",
 
     "browser_action": {
