@@ -1,39 +1,27 @@
-var hanabi = hanabi || {};
-!function() {
-  'use strict';
+var SCREEN_WIDTH = window.innerWidth,
+  SCREEN_HEIGHT = window.innerHeight,
+  SPEED = 10,
 
-  hanabi.funcs = {
-    show: function(user) {
-      init(user)
-    }
-  };
+  canvas = document.createElement('canvas'),
+  context = canvas.getContext('2d'),
+  title = document.createElement('div'),
+  particles = [],
+  rockets = [],
+  colorCode = 0;
 
-  var SCREEN_WIDTH = window.innerWidth
-  var SCREEN_HEIGHT = window.innerHeight
-  var MAX_PARTICLES = 400
-  var SPEED = 10
+function init() {
+  document.body.appendChild(title);
+  title.setAttribute('id', 'hanabi-title');
+  document.body.appendChild(canvas);
+  canvas.setAttribute('id', 'hanabi-canvas');
+  canvas.width = SCREEN_WIDTH;
+  canvas.height = SCREEN_HEIGHT;
+  addCSS();
+  launch()
+  setInterval(loop, SPEED);
+}
 
-  var canvas = document.createElement('canvas')
-  var context = canvas.getContext('2d')
-  var title = document.createElement('div')
-  var particles = []
-  var rockets = []
-  var colorCode = 0
-  var user = ""
-
-  function init(user) {
-    user = user
-    document.body.appendChild(title);
-    title.setAttribute('id', 'hanabi-title');
-    document.body.appendChild(canvas);
-    canvas.setAttribute('id', 'hanabi-canvas');
-    canvas.width = SCREEN_WIDTH;
-    canvas.height = SCREEN_HEIGHT;
-    addCSS();
-    launch()
-  };
-
-  function addCSS() {
+function addCSS() {
   $('body').append([
     "<style>",
     "#hanabi-canvas {",
@@ -44,7 +32,7 @@ var hanabi = hanabi || {};
     "}",
     "#hanabi-title {",
     "  position: relative;",
-    "  z-index: 9999999;",
+    "  z-index: 9999;",
     "  text-align: center;",
     "  font-size: 28px;",
     "}",
@@ -58,7 +46,6 @@ var hanabi = hanabi || {};
 function launch() {
   createRocket(0, 0.7, SCREEN_HEIGHT/3);
   createRocket(SCREEN_WIDTH, 0.3, SCREEN_HEIGHT/3);
-  setInterval(loop, SPEED);
 }
 
 function finish() {
@@ -67,7 +54,7 @@ function finish() {
 }
 
 function showTitle() {
-  title.innerHTML = '<span>'+user+'</span>さんがマージされました👏'
+  title.innerHTML = '<span>'scriptOptions.user'</span>さんがマージされました👏'
 }
 
 function createRocket(x, angle, lifespan) {
@@ -89,6 +76,10 @@ function loop() {
   if (SCREEN_HEIGHT != window.innerHeight) {
     canvas.height = SCREEN_HEIGHT = window.innerHeight;
   }
+
+  // clear canvas
+  // context.fillStyle = "rgba(0, 0, 0, 0.05)";
+  // context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
   var existingRockets = [];
 
@@ -112,12 +103,14 @@ function loop() {
   for (var i = 0; i < particles.length; i++) {
     particles[i].update();
 
+    // render and save particles that can be rendered
     if (particles[i].exists()) {
       particles[i].render(context);
       existingParticles.push(particles[i]);
     }
   }
 
+  // update array with existing particles - old particles should be garbage collected
   particles = existingParticles;
 }
 
@@ -260,6 +253,4 @@ function Rocket(x) {
     c.restore();
   };
 
-}();
-
-hanabi.funcs.show()
+init()
