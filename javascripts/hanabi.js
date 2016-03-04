@@ -29,12 +29,17 @@ function addCSS() {
     "  left: 0;",
     "  top: 0;",
     "  background: rgba(0, 0, 0, 0.25);",
+    "  z-index: 99999;",
     "}",
     "#hanabi-title {",
-    "  position: relative;",
-    "  z-index: 9999;",
+    "  position: absolute;",
+    "  top: 100px;",
+    "  left: 0;",
+    "  right: 0;",
+    "  z-index: 999999;",
     "  text-align: center;",
     "  font-size: 28px;",
+    "  color: white;",
     "}",
     "#hanabi-title > span {",
     "  font-weight: bold;",
@@ -49,8 +54,8 @@ function launch() {
 }
 
 function finish() {
-  canvas.remove()
-  title.remove()
+  // canvas.remove()
+  // title.remove()
 }
 
 function showTitle() {
