@@ -13,9 +13,9 @@
     },
     "background": {
         "scripts": [
-            "js/jquery-1.12.1.min.js",
-            "js/background.js"
+            "javascripts/jquery-1.12.1.min.js",
+            "javascripts/hanabi.js",
+            "javascripts/background.js"
         ]
     }
 }
-

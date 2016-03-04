@@ -21,6 +21,7 @@
     if (this.notifications.length > 0) {
       console.log("hanabi");
     }
+    hanabi.funcs.show()
     console.log("no_hanabi");
   },
 
