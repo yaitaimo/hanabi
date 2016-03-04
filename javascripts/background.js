@@ -19,12 +19,7 @@
     this.notifications = [];
     this.crawlNotifications();
     if (this.notifications.length > 0) {
-      chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-        chrome.tabs.executeScript(null, {file: "javascripts/jquery-1.12.1.min.js"});
-        chrome.tabs.executeScript(null, {file: "javascripts/hanabi.js"});
-      });
     }
-    console.log("no_hanabi");
   },
 
   crawlNotifications: function() {
@@ -50,7 +45,10 @@
         }
       });
       if (self.notifications.length > 0) {
-        console.log("hanabi");
+        chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+          chrome.tabs.executeScript(null, {file: "javascripts/jquery-1.12.1.min.js"});
+          chrome.tabs.executeScript(null, {file: "javascripts/hanabi.js"});
+        });
       } else {
         console.log("no_hanabi");
       }
