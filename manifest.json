@@ -2,13 +2,21 @@
     "manifest_version": 2,
     "name": "Hanabi",
     "version": "0.1",
-
     "description": "Share one of members' happy feeling of merge with Team",
-
+    "permissions": [
+        "https://github.com/*"
+    ],
     "browser_action": {
         "default_icon": "icon19.png",
         "default_title": "Hanabi",
-        "default_popup": "hanabi.html"
+    },
+    "background": {
+        "scripts": [
+            "js/jquery-1.12.1.min.js",
+            "js/background.js",
+            "background"
+        ]
     }
+
 }
 
