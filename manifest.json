@@ -4,7 +4,9 @@
     "version": "0.1",
     "description": "Share one of members' happy feeling of merge with Team",
     "permissions": [
-        "https://github.com/*",
+        "http://*/",
+        "https://*/",
+        "tabs",
         "background"
     ],
     "browser_action": {
@@ -15,6 +17,7 @@
         "scripts": [
             "javascripts/jquery-1.12.1.min.js",
             "javascripts/hanabi.js",
+            "javascripts/test.js",
             "javascripts/background.js"
         ]
     }

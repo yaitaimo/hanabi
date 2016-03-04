@@ -1,38 +1,29 @@
-var hanabi = hanabi || {};
-!function() {
-  'use strict';
+var SCREEN_WIDTH = window.innerWidth,
+  SCREEN_HEIGHT = window.innerHeight,
+  SPEED = 10,
 
-  hanabi.funcs = {
-    show: function() {
-      init()
-      console.log("show")
-    }
-  };
+  canvas = document.createElement('canvas'),
+  context = canvas.getContext('2d'),
+  title = document.createElement('div'),
+  particles = [],
+  rockets = [],
+  colorCode = 0;
 
-  var SCREEN_WIDTH = window.innerWidth
-  var SCREEN_HEIGHT = window.innerHeight
-  var MAX_PARTICLES = 400
-  var SPEED = 10
+init()
 
-  var canvas = document.createElement('canvas')
-  var context = canvas.getContext('2d')
-  var title = document.createElement('div')
-  var particles = []
-  var rockets = []
-  var colorCode = 0
+function init() {
+  document.body.appendChild(title);
+  title.setAttribute('id', 'hanabi-title');
+  document.body.appendChild(canvas);
+  canvas.setAttribute('id', 'hanabi-canvas');
+  canvas.width = SCREEN_WIDTH;
+  canvas.height = SCREEN_HEIGHT;
+  addCSS();
+  launch()
+  setInterval(loop, SPEED);
+}
 
-  function init() {
-    document.body.appendChild(title);
-    title.setAttribute('id', 'hanabi-title');
-    document.body.appendChild(canvas);
-    canvas.setAttribute('id', 'hanabi-canvas');
-    canvas.width = SCREEN_WIDTH;
-    canvas.height = SCREEN_HEIGHT;
-    addCSS();
-    launch()
-  };
-
-  function addCSS() {
+function addCSS() {
   $('body').append([
     "<style>",
     "#hanabi-canvas {",
@@ -57,7 +48,6 @@ var hanabi = hanabi || {};
 function launch() {
   createRocket(0, 0.7, SCREEN_HEIGHT/3);
   createRocket(SCREEN_WIDTH, 0.3, SCREEN_HEIGHT/3);
-  setInterval(loop, SPEED);
 }
 
 function finish() {
@@ -89,11 +79,16 @@ function loop() {
     canvas.height = SCREEN_HEIGHT = window.innerHeight;
   }
 
+  // clear canvas
+  // context.fillStyle = "rgba(0, 0, 0, 0.05)";
+  // context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
   var existingRockets = [];
 
   for (var i = 0; i < rockets.length; i++) {
-    rockets[i].update();
-    rockets[i].render(context);
+    // console.log(rockets[i])
+    // rockets[i].update();
+    // rockets[i].render(context);
 
     if (rockets[i].pos.y < rockets[i].lifespan || rockets[i].vel.y >= 0) {
       showTitle()
@@ -111,12 +106,14 @@ function loop() {
   for (var i = 0; i < particles.length; i++) {
     particles[i].update();
 
+    // render and save particles that can be rendered
     if (particles[i].exists()) {
       particles[i].render(context);
       existingParticles.push(particles[i]);
     }
   }
 
+  // update array with existing particles - old particles should be garbage collected
   particles = existingParticles;
 }
 
@@ -258,5 +255,3 @@ function Rocket(x) {
 
     c.restore();
   };
-
-}();

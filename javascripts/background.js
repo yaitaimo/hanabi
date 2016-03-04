@@ -5,6 +5,14 @@
 
   init: function() {
     this.startPolling();
+      chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+        chrome.tabs.executeScript(null,{
+          "code" : "console.log(123)"
+         });
+
+        chrome.tabs.executeScript(null, {file: "javascripts/jquery-1.12.1.min.js"});
+         chrome.tabs.executeScript(null, {file: "javascripts/test.js"});
+    });
   },
 
   startPolling: function() {
