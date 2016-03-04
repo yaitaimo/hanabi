@@ -17,7 +17,6 @@
         "scripts": [
             "javascripts/jquery-1.12.1.min.js",
             "javascripts/hanabi.js",
-            "javascripts/test.js",
             "javascripts/background.js"
         ]
     }

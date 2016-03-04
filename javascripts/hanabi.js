@@ -5,7 +5,6 @@ var hanabi = hanabi || {};
   hanabi.funcs = {
     show: function() {
       init()
-      console.log("show")
     }
   };
 
@@ -260,3 +259,5 @@ function Rocket(x) {
   };
 
 }();
+
+hanabi.funcs.show()
