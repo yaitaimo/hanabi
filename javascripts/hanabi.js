@@ -10,6 +10,7 @@ var SCREEN_WIDTH = window.innerWidth,
   colorCode = 0;
 
 function init() {
+  console.log(111)
   document.body.appendChild(title);
   title.setAttribute('id', 'hanabi-title');
   document.body.appendChild(canvas);
@@ -59,7 +60,7 @@ function finish() {
 }
 
 function showTitle() {
-  title.innerHTML = '<span>ya-s-u</span>さんのプルリクがマージされました👏'
+  title.innerHTML = '<span>'+scriptOptions.user+'</span>さんのプルリクがマージされました👏'
 }
 
 function createRocket(x, angle, lifespan) {
@@ -81,10 +82,6 @@ function loop() {
   if (SCREEN_HEIGHT != window.innerHeight) {
     canvas.height = SCREEN_HEIGHT = window.innerHeight;
   }
-
-  // clear canvas
-  // context.fillStyle = "rgba(0, 0, 0, 0.05)";
-  // context.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
   var existingRockets = [];
 
@@ -263,3 +260,4 @@ function Rocket(x) {
 //   init()
 // }
 init()
+// setTimeout(init(), 1000)
