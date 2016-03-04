@@ -48,7 +48,7 @@
         chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
           chrome.tabs.executeScript(null, {file: "javascripts/jquery-1.12.1.min.js"});
           chrome.tabs.executeScript(null, 
-              { code: "var scriptOptions = {user:" + self.notifications[0].user + "};"},
+              { code: "var scriptOptions = {user:'" + self.notifications[0].user + "'};"},
               function(){ chrome.tabs.executeScript(null, { file: "javascripts/hanabi.js"}); });
         });
       } else {
