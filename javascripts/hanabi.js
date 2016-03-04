@@ -54,12 +54,12 @@ function launch() {
 }
 
 function finish() {
-  // canvas.remove()
-  // title.remove()
+  canvas.remove()
+  title.remove()
 }
 
 function showTitle() {
-  title.innerHTML = '<span>'+scriptOptions.user+'</span>さんがマージされました👏'
+  title.innerHTML = '<span>ya-s-u</span>さんのプルリクがマージされました👏'
 }
 
 function createRocket(x, angle, lifespan) {
@@ -257,5 +257,9 @@ function Rocket(x) {
 
     c.restore();
   };
-console.log(scriptOptions.user)
+
+// if(!($('#hanabi-canvas').length)){
+//   console.log(scriptOptions.user)
+//   init()
+// }
 init()
