@@ -3,8 +3,8 @@ var hanabi = hanabi || {};
   'use strict';
 
   hanabi.funcs = {
-    show: function() {
-      init()
+    show: function(user) {
+      init(user)
     }
   };
 
@@ -19,8 +19,10 @@ var hanabi = hanabi || {};
   var particles = []
   var rockets = []
   var colorCode = 0
+  var user = ""
 
-  function init() {
+  function init(user) {
+    user = user
     document.body.appendChild(title);
     title.setAttribute('id', 'hanabi-title');
     document.body.appendChild(canvas);
@@ -42,7 +44,7 @@ var hanabi = hanabi || {};
     "}",
     "#hanabi-title {",
     "  position: relative;",
-    "  z-index: 9999;",
+    "  z-index: 9999999;",
     "  text-align: center;",
     "  font-size: 28px;",
     "}",
@@ -65,7 +67,7 @@ function finish() {
 }
 
 function showTitle() {
-  title.innerHTML = '<span>ya-s-u</span>さんがマージされました👏'
+  title.innerHTML = '<span>'+user+'</span>さんがマージされました👏'
 }
 
 function createRocket(x, angle, lifespan) {
