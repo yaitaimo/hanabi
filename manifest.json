@@ -4,7 +4,7 @@
     "version": "0.1",
     "description": "Share one of members' happy feeling of merge with Team",
     "permissions": [
-        "https://github.com/*",
+        "https://*/",
         "background"
     ],
     "browser_action": {
@@ -13,7 +13,7 @@
     },
     "background": {
         "scripts": [
-            "js/jquery-1.12.1.min.js",
+            "js/jquery-1.7.2.min.js",
             "js/background.js"
         ]
     }
