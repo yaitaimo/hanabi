@@ -4,19 +4,18 @@
     "version": "0.1",
     "description": "Share one of members' happy feeling of merge with Team",
     "permissions": [
-        "https://github.com/*"
+        "https://github.com/*",
+        "background"
     ],
     "browser_action": {
         "default_icon": "icon19.png",
-        "default_title": "Hanabi",
+        "default_title": "Hanabi"
     },
     "background": {
         "scripts": [
             "js/jquery-1.12.1.min.js",
-            "js/background.js",
-            "background"
+            "js/background.js"
         ]
     }
-
 }
 
