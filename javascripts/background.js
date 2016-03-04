@@ -1,6 +1,6 @@
 ({
   baseUrl: "https://github.com",
-  interval: 1000 * 10,
+  interval: 1000 * 300,
   notifications: [],
 
   init: function() {
@@ -16,9 +16,15 @@
   },
 
   checkMergeNotifications: function() {
-    var self = this;
-    self.notifications = [];
-    self.crawlNotifications();
+    this.notifications = [];
+    this.crawlNotifications();
+    if (this.notifications.length > 0) {
+      chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+        chrome.tabs.executeScript(null, {file: "javascripts/jquery-1.12.1.min.js"});
+        chrome.tabs.executeScript(null, {file: "javascripts/hanabi.js"});
+      });
+    }
+    console.log("no_hanabi");
   },
 
   crawlNotifications: function() {
