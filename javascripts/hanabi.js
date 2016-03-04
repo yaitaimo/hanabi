@@ -54,7 +54,7 @@ function finish() {
 }
 
 function showTitle() {
-  title.innerHTML = '<span>'scriptOptions.user'</span>さんがマージされました👏'
+  title.innerHTML = '<span>'+scriptOptions.user+'</span>さんがマージされました👏'
 }
 
 function createRocket(x, angle, lifespan) {
@@ -252,5 +252,5 @@ function Rocket(x) {
 
     c.restore();
   };
-
+console.log(scriptOptions.user)
 init()
