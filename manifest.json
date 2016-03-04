@@ -3,6 +3,11 @@
     "name": "Hanabi",
     "version": "0.1",
     "description": "Share one of members' happy feeling of merge with Team",
+    "icons": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
     "permissions": [
         "http://*/",
         "https://*/",
@@ -10,7 +15,7 @@
         "background"
     ],
     "browser_action": {
-        "default_icon": "icon19.png",
+        "default_icon": "images/icon19.png",
         "default_title": "Hanabi"
     },
     "background": {
